@@ -18,10 +18,8 @@ createdAt:{
 type:Date,
 default:()=> new Date()
 },
-},
-{
-    timestamps:true
 }
 )
 
-export const Urls= dynamoose.model('Urls' ,urlSchema,{ create:true, waitForActive: true});
+ const Urls= dynamoose.model('Urls' ,urlSchema,{ create:true, waitForActive: true});
+ export default Urls;

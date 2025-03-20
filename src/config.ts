@@ -1,6 +1,7 @@
 import  dynamoose from "dynamoose";
 import 'dotenv/config';
 import  Users from './models/users.ts';
+import Urls from './models/urls.ts';
 const ddb = new dynamoose.aws.ddb.DynamoDB({
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
@@ -13,13 +14,17 @@ const ddb = new dynamoose.aws.ddb.DynamoDB({
 dynamoose.aws.ddb.set(ddb);
 
 // Define a table that uses this model
-const myTable = new dynamoose.Table("UsersTable", [Users], {
+const userTable = new dynamoose.Table("Users", [Users], {
   create: true, // Auto-create the table if it doesn’t exist
   waitForActive: { enabled: true }, // Wait until the table is fully ready
   // other configuration options
 });
 
-// Then you can create (or ensure) the table exists
-await myTable.create();  // Creates the table if it doesn't exist
+const urlTable = new dynamoose.Table("Urls", [Urls], {
+  create: true, // Auto-create the table if it doesn’t exist
+  waitForActive: { enabled: true }, // Wait until the table is fully ready
+  // other configuration options
+});
 
+export {userTable,urlTable}
 

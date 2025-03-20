@@ -12,6 +12,9 @@
       "noEmit": true,
       "skipLibCheck": true
   },
+  "ts-node": {
+    "esm": true
+  },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "client"]
 }
