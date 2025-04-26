@@ -15,15 +15,13 @@ dynamoose.aws.ddb.set(ddb);
 
 // Define a table that uses this model
 const userTable = new dynamoose.Table("Users", [Users], {
-  create: true, // Auto-create the table if it doesn’t exist
-  waitForActive: { enabled: true }, // Wait until the table is fully ready
-  // other configuration options
+  create: true, 
+  waitForActive: { enabled: true }, 
 });
 
 const urlTable = new dynamoose.Table("Urls", [Urls], {
-  create: true, // Auto-create the table if it doesn’t exist
-  waitForActive: { enabled: true }, // Wait until the table is fully ready
-  // other configuration options
+  create: true, 
+  waitForActive: { enabled: true }, 
 });
 
 export {userTable,urlTable}

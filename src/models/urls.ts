@@ -1,6 +1,4 @@
 import dynamoose from "dynamoose";
-
-
 interface UrlItem {
     shortUrl: string;
   originalUrl: string;
@@ -27,7 +25,5 @@ default:()=> new Date()
 },
 }
 )
-
  const Urls= dynamoose.model('Urls' ,urlSchema,{ create:true, waitForActive: true})
- 
  export default Urls;
