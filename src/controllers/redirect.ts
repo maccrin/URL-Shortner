@@ -19,7 +19,7 @@ const data = await Urls.create({
     clickCount: 0,
   });
 const shortUrl=`${BASE_URL}/${shortId}`;
-res.status(200).json({
+res.status(200).setHeader("Content-Type","application/json").json({
   shortUrl,
   shortId
 });

@@ -1,4 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from "express";
+import createShort from './controllers/redirect.ts'
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
@@ -23,4 +24,6 @@ app.get('/', (req:Request,res:Response)=>{
     console.log(req.originalUrl);
     res.json({message:'Hello from Server'});
 });
+
+app.post(`/${process.env.API_PATH}/getShort`, createShort)
 export default app;
