@@ -1,5 +1,10 @@
 import dynamoose from "dynamoose";
-
+interface UrlItem {
+    shortUrl: string;
+  originalUrl: string;
+  clickCount: number;
+  createdAt: Date;
+}
 const urlSchema= new dynamoose.Schema({
 shortUrl:{
 type:String,
@@ -20,6 +25,5 @@ default:()=> new Date()
 },
 }
 )
-
- const Urls= dynamoose.model('Urls' ,urlSchema,{ create:true, waitForActive: true});
+ const Urls= dynamoose.model('Urls' ,urlSchema,{ create:true, waitForActive: true})
  export default Urls;
