@@ -1,9 +1,9 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import createShort from './controllers/redirect.ts'
+import getShort from './controllers/shorten.ts'
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
-import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
 import urlRouter from './routes/urlRoute.ts'
 // 1) Import your config so it sets up Dynamoose
