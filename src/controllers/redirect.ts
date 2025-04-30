@@ -1,24 +1,35 @@
-import {urlTable } from '../config.ts'
-import Urls from '../models/urls.ts';
+import UrlsT from '../models/urls.ts';
 import  { Request, Response, NextFunction } from "express";
 import { randomBytes } from 'crypto';
 
 const BASE_URL=process.env.BASE_URL??'http://localhost:3000'
+//validate longUrl
+const isValidUrl=(url:string):boolean=>{
+try{
+  new URL(url);
+return true;
+}
+catch(error){
+return false;
+}
+}
 
 const createShort= async (req:Request,res:Response):Promise<void>=>{
   try{
 const{url:originalUrl}=JSON.parse(req.body);
 
 const shortId=randomBytes(3).toString('base64url');
-if(!originalUrl){
-    res.status(400).json({error:'url is not provided'});
+if(!originalUrl || !isValidUrl(originalUrl)){
+    res.status(400).json({error:'A valid url is required'});
 }
-const data = await Urls.create({
-    originalUrl,
-    shortUrl: shortId,
-    clickCount: 0,
-  });
+
 const shortUrl=`${BASE_URL}/${shortId}`;
+
+const data = await UrlsT.create({
+  originalUrl,
+  shortId,
+  clickCount: 0,
+});
 res.status(200).setHeader("Content-Type","application/json").json({
   shortUrl,
   shortId
