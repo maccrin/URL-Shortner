@@ -1,4 +1,4 @@
-import Urls from '../models/urls.ts';
+import UrlsT from '../models/urls.ts';
 import  { Request, Response, NextFunction } from "express";
 import { randomBytes } from 'crypto';
 
@@ -15,9 +15,9 @@ if(!originalUrl){
 
 const shortUrl=`${BASE_URL}/${shortId}`;
 
-const data = await Urls.create({
+const data = await UrlsT.create({
   originalUrl,
-  shortUrl,
+  shortId,
   clickCount: 0,
 });
 res.status(200).setHeader("Content-Type","application/json").json({

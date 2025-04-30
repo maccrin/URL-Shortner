@@ -1,4 +1,4 @@
-import Urls from '../models/urls.ts';
+import UrlsT from '../models/urls.ts';
 import  { Request, Response, NextFunction } from "express";
 
 const getShort=async ( req:Request,res:Response):Promise<void>=>{
@@ -7,12 +7,12 @@ if(!shortId){
     res.status(400).json({error:'shortID missing'});
     return
 }
-const record= await Urls.get(shortId);
+const record= await UrlsT.get(shortId);
 if(!record){
     res.status(400).json({error:'record not found'});
     return 
 }
-await Urls.update({shortUrl:shortId,clickCount:record.clickCount+1});
+await UrlsT.update({shortUrl:shortId,clickCount:record.clickCount+1});
 res.redirect(301,record.originalUrl);
 }
 

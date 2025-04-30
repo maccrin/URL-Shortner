@@ -25,5 +25,6 @@ app.get('/', (req:Request,res:Response)=>{
     res.json({message:'Hello from Server'});
 });
 
-app.post(`/${process.env.API_PATH}/getShort`, createShort)
+app.post(`/${process.env.API_PATH}/getShort`, createShort);
+app.get(`/${process.env.API_PATH}/:shortId`,getShort);
 export default app;
