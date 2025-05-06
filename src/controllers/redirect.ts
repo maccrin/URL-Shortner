@@ -16,7 +16,7 @@ return false;
 
 const createShort= async (req:Request,res:Response):Promise<void>=>{
   try{
-const{url:originalUrl}=JSON.parse(req.body);
+const{url:originalUrl}=req.body;
 
 const shortId=randomBytes(3).toString('base64url');
 if(!originalUrl || !isValidUrl(originalUrl)){
@@ -26,9 +26,9 @@ if(!originalUrl || !isValidUrl(originalUrl)){
 const shortUrl=`${BASE_URL}/${shortId}`;
 
 const data = await UrlsT.create({
-  originalUrl,
   shortId,
-  clickCount: 0,
+  originalUrl,
+   clickCount: 0,
 });
 res.status(200).setHeader("Content-Type","application/json").json({
   shortUrl,
