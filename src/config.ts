@@ -19,7 +19,7 @@ const userTable = new dynamoose.Table("Users", [Users], {
   waitForActive: { enabled: true }, 
 });
 
-const urlTable = new dynamoose.Table("Urls", [Urls], {
+const urlTable = new dynamoose.Table("UrlsT", [Urls], {
   create: true, 
   waitForActive: { enabled: true }, 
 });

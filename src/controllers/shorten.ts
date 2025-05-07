@@ -12,7 +12,7 @@ if(!record){
     res.status(400).json({error:'record not found'});
     return 
 }
-await UrlsT.update({shortUrl:shortId,clickCount:record.clickCount+1});
+await UrlsT.update({shortId,clickCount:record.clickCount+1});
 res.redirect(301,record.originalUrl);
 }
 
