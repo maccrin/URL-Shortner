@@ -30,7 +30,7 @@ const data = await UrlsT.create({
   originalUrl,
    clickCount: 0,
 });
-res.status(200).setHeader("Content-Type","application/json").json({
+res.status(201).setHeader("Content-Type","application/json").json({
   shortUrl,
   shortId
 });
