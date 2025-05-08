@@ -25,7 +25,7 @@ if(!originalUrl || !isValidUrl(originalUrl)){
 
 const shortUrl=`${BASE_URL}/${shortId}`;
 
-const data = await UrlsT.create({
+ await UrlsT.create({
   shortId,
   originalUrl,
    clickCount: 0,
