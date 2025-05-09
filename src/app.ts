@@ -1,6 +1,6 @@
 import express, { Application, Request, Response, NextFunction } from "express";
-import createShort from './controllers/redirect.ts'
-import getShort from './controllers/shorten.ts'
+import createShort from './controllers/getShortUrl.ts'
+import getShort from './controllers/redirectToLongUrl.ts'
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
