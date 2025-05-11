@@ -1,6 +1,6 @@
 import express, { Application, Request, Response, NextFunction } from "express";
-import createShort from './controllers/redirect.ts'
-import getShort from './controllers/shorten.ts'
+import createShort from './controllers/getShortUrl.ts'
+import getShort from './controllers/redirectToLongUrl.ts'
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
@@ -25,6 +25,6 @@ app.get('/', (req:Request,res:Response)=>{
     res.json({message:'Hello from Server'});
 });
 
-app.post(`/${process.env.API_PATH}/getShort`, createShort);
-app.get(`/${process.env.API_PATH}/:shortId`,getShort);
+app.use(`/${process.env.API_PATH}`, urlRouter);
+
 export default app;

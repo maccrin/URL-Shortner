@@ -5,7 +5,7 @@
   "description": "A URL shortener is a service that converts long URLs into shorter, more manageable ones",
   "main": "app",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon --watch src --ext ts --exec \"tsx src/index.ts\""
   },
   "keywords": [],
@@ -18,16 +18,22 @@
     "dotenv": "^16.4.7",
     "dynamoose": "^4.0.3",
     "express": "^4.21.2",
-    "helmet": "^7.2.0"
+    "helmet": "^7.2.0",
+    "http-status-codes": "^2.3.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
+    "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.10",
+    "@types/supertest": "^6.0.3",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"

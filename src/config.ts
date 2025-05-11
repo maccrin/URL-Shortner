@@ -2,6 +2,7 @@ import  dynamoose from "dynamoose";
 import 'dotenv/config';
 import  Users from './models/users.ts';
 import Urls from './models/urls.ts';
+import UrlsTest from './models/urlsTest.ts';
 const ddb = new dynamoose.aws.ddb.DynamoDB({
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
@@ -19,10 +20,14 @@ const userTable = new dynamoose.Table("Users", [Users], {
   waitForActive: { enabled: true }, 
 });
 
-const urlTable = new dynamoose.Table("Urls", [Urls], {
+const urlTable = new dynamoose.Table("UrlsT", [Urls], {
   create: true, 
   waitForActive: { enabled: true }, 
 });
 
-export {userTable,urlTable}
+const urlsTestTable= new dynamoose.Table("UrlsTest",[UrlsTest],{
+  create:true,
+  waitForActive:{enabled:true},
+});
+export {userTable,urlTable,urlsTestTable}
 
