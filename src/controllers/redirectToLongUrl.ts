@@ -1,19 +1,20 @@
 import UrlsT from '../models/urls.ts';
 import  { Request, Response, NextFunction } from "express";
+import {StatusCodes} from 'http-status-codes';
+const redirectLongUrl=async ( req:Request,res:Response):Promise<void>=>{
+const shortId= req.params.shortId;
 
-const getShort=async ( req:Request,res:Response):Promise<void>=>{
-const {shortId}= req.params;
 if(!shortId){
-    res.status(400).json({error:'shortID missing'});
+    res.status(StatusCodes.BAD_REQUEST).json({error:'shortID missing'});
     return
 }
 const record= await UrlsT.get(shortId);
 if(!record){
-    res.status(400).json({error:'record not found'});
+    res.status(StatusCodes.NOT_FOUND).json({error:'record not found'});
     return 
 }
 await UrlsT.update({shortId,clickCount:record.clickCount+1});
-res.redirect(301,record.originalUrl);
+res.redirect(StatusCodes.MOVED_PERMANENTLY,record.originalUrl);
 }
 
-export default getShort
+export default redirectLongUrl
