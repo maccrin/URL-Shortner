@@ -7,7 +7,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import urlRouter from './routes/urlRoute'
 // 1) Import your config so it sets up Dynamoose
-import './config.ts';
+import './config';
 const app: Application = express();
 app.use(express.json());
 app.use(helmet());
