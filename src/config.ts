@@ -1,8 +1,8 @@
 import  dynamoose from "dynamoose";
 import 'dotenv/config';
-import  Users from './models/users.ts';
-import Urls from './models/urls.ts';
-import UrlsTest from './models/urlsTest.ts';
+import  Users from './models/users';
+import Urls from './models/urls';
+import UrlsTest from './models/urlsTest';
 const ddb = new dynamoose.aws.ddb.DynamoDB({
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',

@@ -1,6 +1,6 @@
 import express from "express"
-import redirectLongUrl from '../controllers/redirectToLongUrl.ts'
-import getShortUrl from '../controllers/getShortUrl.ts'
+import redirectLongUrl from '../controllers/redirectToLongUrl'
+import getShortUrl from '../controllers/getShortUrl'
 
 const urlRouter=express.Router({mergeParams:true});
 urlRouter.route('/:shortId').get(redirectLongUrl);
