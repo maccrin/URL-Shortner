@@ -1,6 +1,6 @@
 import request from 'supertest';
-import app from '../app.ts';
-import {url} from './getShortUrl.test.ts'
+import app from '../app';
+import {url} from './getShortUrl.test'
 
 let shortId: string
 

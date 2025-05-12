@@ -1,4 +1,4 @@
-import UrlsT from '../models/urls.ts';
+import UrlsT from '../models/urls';
 import  { Request, Response, NextFunction } from "express";
 import {StatusCodes} from 'http-status-codes';
 const redirectLongUrl=async ( req:Request,res:Response):Promise<void>=>{
