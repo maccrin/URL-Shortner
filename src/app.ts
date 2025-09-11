@@ -6,6 +6,8 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import urlRouter from './routes/urlRoute'
+import {StatusCodes} from 'http-status-codes';
+
 // 1) Import your config so it sets up Dynamoose
 import './config';
 const app: Application = express();
@@ -22,9 +24,13 @@ else{
 app.get('/', (req:Request,res:Response)=>{
     console.log(req.url);
     console.log(req.originalUrl);
-    res.json({message:'Hello from Server'});
+    res.status(200).json({message:'Hello from Server'});
 });
 
+app.get('/search',( req:Request,res:Response)=>{
+    console.log(req.query);
+res.send(`here is req queries ${req.query.page}, ${req.query.q}`)
+})
 app.use(`/${process.env.API_PATH}`, urlRouter);
 
 export default app;

@@ -16,5 +16,4 @@ if(!record){
 await UrlsT.update({shortId,clickCount:record.clickCount+1});
 res.redirect(StatusCodes.MOVED_PERMANENTLY,record.originalUrl);
 }
-
 export default redirectLongUrl
